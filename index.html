@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="store">
+	<head>
+		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+	</head>
+<body ng-controller="StoreController as store">
+  <!-- Products Container -->
+  <div class="list-group">
+    <!-- Product Container -->
+    <!-- NG-REPEAT used to iterate over all objects in the store -->
+    <!-- If product is sold out, HIDE it -->
+    <div ng-repeat="product in store.products" class="list-group-item" ng-hide="store.product.soldOut">
+  	  <h1> {{product.name}} <em class="pull-right">{{product.price | currency}}</em> </h1>
+  	  <p> {{product.description}}</p>
+  	<!-- Tells our button to only show if the value is TRUE -->
+  	  <button ng-show="store.product.canPurchase"> Add to Cart </button>
+    </div>
+  </div>
+  <!-- Loaded Scripts -->
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
